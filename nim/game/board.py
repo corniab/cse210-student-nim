@@ -31,10 +31,10 @@ class Board:
         stones_choice = move.get_stones()
         pile_remove = move.get_pile()
 
-        for _ in range(pile_remove):
-            self._board[stones_choice].pop(0)
+        for _ in range(stones_choice):
+            self._board[pile_remove].pop(0)
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         """Determines if all the stones have been removed from the board.
         It returns True if the board has no stones on it; false if otherwise.
 
