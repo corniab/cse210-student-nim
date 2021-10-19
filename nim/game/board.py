@@ -20,7 +20,7 @@ class Board:
         """
         self._board = self._prepare()
 
-    def apply(self, move):
+    def apply(self, move) -> None:
         """The apply method applies a move to the playing surface.
         In this case, that means removing a number of stones from a pile.
 
@@ -28,6 +28,11 @@ class Board:
             self (Board): An instance of Board.
             move: An instance of Move(class).
         """
+        stones_choice = move.get_stones()
+        pile_remove = move.get_pile()
+
+        for _ in range(pile_remove):
+            self._board[stones_choice].pop(0)
 
     def is_empty(self):
         """Determines if all the stones have been removed from the board.
@@ -36,6 +41,7 @@ class Board:
         Args:
             self (Board): An instance of Board.
         """
+        for i in range(len(self._board))
 
     def to_string(self):
         """Converts the board data to its string representation
@@ -44,7 +50,7 @@ class Board:
         Args:
             self (Board): An instance of Board.
         """
-        board_string = ""
+        board_string = "\n"
 
         for key, value in self._board.items():
             stone_pile = f"{key}: {' '.join(value)}\n"
