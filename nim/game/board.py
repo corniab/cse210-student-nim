@@ -28,11 +28,17 @@ class Board:
             self (Board): An instance of Board.
             move: An instance of Move(class).
         """
-        stones_choice = move.get_stones()
-        pile_remove = move.get_pile()
+        pile_index = move.get_pile()
+        stones_remove = move.get_stones()
 
-        for _ in range(stones_choice):
-            self._board[pile_remove].pop(0)
+        pile_length = len(self._board[pile_index])
+
+        if stones_remove <= pile_length:
+            for _ in range(stones_remove):
+                self._board[pile_index].pop(-1)
+        else:
+            for _ in range(pile_length):
+                self._board[pile_index].pop(-1)
 
     def is_empty(self) -> bool:
         """Determines if all the stones have been removed from the board.
@@ -46,10 +52,10 @@ class Board:
             stones = len(self._board[i])
             count += stones
 
-        if stones > 0:
-            return True
-        else:
+        if count > 0:
             return False
+        else:
+            return True
 
     def to_string(self):
         """Converts the board data to its string representation
