@@ -18,7 +18,7 @@ class Board:
         Args:
             self (Board): An instance of Board.
         """
-        self._prepare()
+        self._piles = self._prepare()
 
     def apply(self, move):
         """The apply method applies a move to the playing surface.
@@ -52,3 +52,8 @@ class Board:
         Args:
             self (Board): An instance of Board.
         """
+        board = {}
+        for i in random.randint(2, 5):
+            board[i] = ["O" for _ in random.randint(1, 9)]
+
+        return board
