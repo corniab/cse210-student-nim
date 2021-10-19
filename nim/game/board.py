@@ -41,7 +41,15 @@ class Board:
         Args:
             self (Board): An instance of Board.
         """
-        for i in range(len(self._board))
+        count = 0
+        for i in range(len(self._board)):
+            stones = len(self._board[i])
+            count += stones
+
+        if stones > 0:
+            return True
+        else:
+            return False
 
     def to_string(self):
         """Converts the board data to its string representation
