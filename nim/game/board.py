@@ -1,4 +1,4 @@
-import random
+from random import randrange
 
 
 class Board:
@@ -18,7 +18,7 @@ class Board:
         Args:
             self (Board): An instance of Board.
         """
-        self._piles = self._prepare()
+        self._board = self._prepare()
 
     def apply(self, move):
         """The apply method applies a move to the playing surface.
@@ -44,6 +44,13 @@ class Board:
         Args:
             self (Board): An instance of Board.
         """
+        board_string = ""
+
+        for key, value in self._board.items():
+            stone_pile = f"{key}: {' '.join(value)}\n"
+            board_string += stone_pile
+
+        return board_string
 
     def _prepare(self):
         """Sets up the board with a random number of piles (2 - 5)
@@ -53,7 +60,8 @@ class Board:
             self (Board): An instance of Board.
         """
         board = {}
-        for i in random.randint(2, 5):
-            board[i] = ["O" for _ in random.randint(1, 9)]
+
+        for i in range(0, randrange(2, 6)):
+            board[i] = ["O" for _ in range(1, randrange(2, 11))]
 
         return board
